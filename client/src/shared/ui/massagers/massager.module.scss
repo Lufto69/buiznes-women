@@ -1,0 +1,18 @@
+.wrapper_link_massager {
+	display: flex;
+	gap: 10px;
+	.link_massager {
+		width: 40px;
+		height: 40px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 50%;
+		background-color: #006699;
+		img {
+			color: #fff;
+			width: 30px;
+			height: 30px;
+		}
+	}
+}

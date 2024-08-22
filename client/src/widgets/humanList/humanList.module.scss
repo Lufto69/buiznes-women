@@ -1,0 +1,72 @@
+.listPerson {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+	width: 1200px;
+	h1 {
+		margin-top: 76px;
+		margin-bottom: 100px;
+		font-size: 70px;
+		padding: 10px 10px;
+		font-weight: 700;
+		color: #036;
+		&::after {
+			content: '';
+			background-color: #036;
+			height: 3px;
+			display: block;
+		}
+	}
+	.persons {
+		width: 100%;
+		margin: auto;
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		margin-bottom: 190px;
+		text-align: center;
+
+		h2 {
+			color: #003366;
+			font-size: 60px;
+			font-weight: 700;
+		}
+		ul {
+			margin-top: 50px;
+			list-style: none;
+			padding: 0 40px;
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+			gap: 60px;
+			li {
+				width: 100%;
+				max-width: 300px;
+				img {
+					width: 100%;
+					height: 300px;
+					background: #909090;
+					border-radius: 50px 50px 50px 0px;
+				}
+				.button {
+					margin-top: 40px;
+					padding: 15px 30px;
+					max-width: 200px;
+				}
+			}
+		}
+	}
+	.persons_custom_block {
+		border-radius: 50px;
+		background: #4f8ac4;
+		padding: 30px 30px 80px 30px;
+		position: relative;
+		h2 {
+			color: #fff;
+			font-size: 60px;
+			font-weight: 700;
+		}
+	}
+}

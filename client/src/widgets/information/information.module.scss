@@ -1,0 +1,84 @@
+.map {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	.wrap {
+		position: absolute;
+		top: 20px;
+		left: 18%;
+		address {
+			max-width: 500px;
+			background: rgba(0, 51, 102, 0.928);
+			padding: 30px;
+			h2 {
+				color: #fff;
+				font-size: 50px;
+				font-weight: 700;
+			}
+			p {
+				color: #fff;
+				margin-top: 20px;
+				max-width: 400px;
+				font-size: 20px;
+				font-weight: 400;
+				margin-bottom: 10px;
+			}
+		}
+		.wrapper_link {
+			display: flex;
+			align-items: center;
+			gap: 20px;
+			&_massager {
+				display: flex;
+				gap: 10px;
+				.link-massager {
+					width: 40px;
+					height: 40px;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					border-radius: 50%;
+					img {
+						color: #fff;
+						width: 30px;
+						height: 30px;
+					}
+				}
+			}
+		}
+	}
+}
+
+.wrapper {
+	display: flex;
+	justify-content: space-between;
+	margin: auto;
+	max-width: 1600px;
+	.info {
+		margin-top: 70px;
+		width: 45%;
+		p {
+			color: #036;
+			font-size: 19px;
+			font-weight: 400;
+		}
+		button {
+			margin-top: 40px;
+			padding: 15px 20px;
+			border-radius: 50px;
+			border: 2px solid #036;
+			color: #036;
+			font-size: 15px;
+			font-weight: 700;
+		}
+		&:last-child {
+			text-align: end;
+		}
+	}
+	.background {
+		margin-top: 150px;
+		z-index: -1;
+	}
+}

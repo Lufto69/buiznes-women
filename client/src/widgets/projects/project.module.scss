@@ -1,0 +1,119 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	h1 {
+		margin-top: 76px;
+		margin-bottom: 20px;
+		font-size: 70px;
+		padding: 10px 10px;
+		font-weight: 700;
+		color: #036;
+		&::after {
+			content: '';
+			background-color: #036;
+			height: 3px;
+			display: block;
+		}
+	}
+
+	.project {
+		margin: auto;
+		display: flex;
+		justify-content: center;
+		width: 100%;
+		position: relative;
+		ul {
+			list-style: none;
+			max-width: 1600px;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
+			gap: 50px;
+			padding: 40px;
+			li {
+				display: flex;
+				background: #036;
+				border-radius: 50px 0px 0px 50px;
+				padding-left: 4px;
+				.first,
+				.second {
+					width: 50%;
+				}
+				.first {
+					h2 {
+						margin: 0 0 60px 0;
+						padding: 45px;
+						font-size: 50px;
+						font-weight: 700;
+						color: white;
+					}
+					a {
+						display: inline-block;
+						margin-bottom: 3px;
+						padding: 20px 65px;
+						color: #003366;
+						text-decoration: none;
+						border-radius: 0 0 0 49px;
+						font-size: 20px;
+						font-weight: 400;
+						background-color: #daedff;
+					}
+				}
+				.second {
+					border-radius: 50px 0px 0px 50px;
+					background: #4f8ac4;
+					padding: 40px;
+					h2 {
+						color: white;
+						font-size: 50px;
+						font-weight: 700;
+					}
+					p {
+						font-size: 20px;
+						font-weight: 400;
+						color: white;
+					}
+				}
+				&:nth-child(2n) {
+					flex-direction: row-reverse;
+					border-radius: 0px 50px 50px 0px;
+					padding-left: 0px;
+					padding-right: 2px;
+					.first {
+						margin-right: auto;
+						text-align: right;
+						a {
+							display: inline-block;
+							margin-bottom: 3px;
+							padding: 20px 65px;
+							color: #003366;
+							text-decoration: none;
+							border-radius: 0 0 49px 0;
+							font-size: 20px;
+							font-weight: 400;
+							background-color: #daedff;
+						}
+					}
+					.second {
+						border-radius: 0px 50px 50px 0px;
+						background: #4f8ac4;
+						padding: 40px;
+						h2 {
+							color: white;
+							font-size: 50px;
+							font-weight: 700;
+						}
+						p {
+							font-size: 20px;
+							font-weight: 400;
+							color: white;
+						}
+					}
+				}
+			}
+		}
+	}
+}

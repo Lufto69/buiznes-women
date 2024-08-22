@@ -1,0 +1,92 @@
+.about {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	.sells {
+		background: #ababab;
+		width: 100%;
+		text-align: center;
+		padding: 60px;
+		h1 {
+			color: #fff;
+			font-size: 35px;
+			font-weight: 700;
+		}
+		div {
+			margin: 65px 0;
+			color: #fff;
+			font-size: 25px;
+			font-weight: 400;
+		}
+		img {
+			width: 50px;
+			height: auto;
+		}
+	}
+
+	ul {
+		list-style: none;
+		margin-top: 80px;
+		li {
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			margin-bottom: 50px;
+			.number {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				color: white;
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+				background-color: #036;
+				font-size: 25px;
+				font-weight: 400;
+				position: relative;
+				&::before {
+					content: '';
+					z-index: -1;
+					top: -100px;
+					position: absolute;
+					width: 4px;
+					height: 100px;
+					background: #036;
+				}
+			}
+			&:first-child {
+				.number {
+					&::before {
+						height: 0px;
+					}
+				}
+			}
+			.action {
+				margin-left: 30px;
+				h2 {
+					color: #036;
+					font-size: 38px;
+					font-weight: 700;
+					margin-bottom: 10px;
+				}
+				p {
+					color: #036;
+					font-size: 26px;
+					font-weight: 400;
+				}
+			}
+		}
+	}
+	.invite_button {
+		margin-top: 100px;
+		padding: 20px 40px;
+		background: #036;
+		border-radius: 50px;
+		color: white;
+		font-size: 20px;
+		&:hover {
+			background: rgb(1, 68, 134);
+		}
+	}
+}
