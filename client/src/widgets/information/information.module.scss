@@ -55,30 +55,128 @@
 	display: flex;
 	justify-content: space-between;
 	margin: auto;
+	padding: 0 30px;
+	padding-bottom: 70px;
 	max-width: 1600px;
+	position: relative;
 	.info {
 		margin-top: 70px;
 		width: 45%;
 		p {
 			color: #036;
-			font-size: 19px;
+			font-size: 24px;
 			font-weight: 400;
 		}
 		button {
 			margin-top: 40px;
-			padding: 15px 20px;
-			border-radius: 50px;
-			border: 2px solid #036;
-			color: #036;
-			font-size: 15px;
-			font-weight: 700;
+			padding: 20px 30px;
+			font-size: 22px;
 		}
 		&:last-child {
 			text-align: end;
 		}
 	}
 	.background {
-		margin-top: 150px;
 		z-index: -1;
+		position: absolute;
+		top: 150px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}
+
+@media screen and (max-width: 1600px) {
+	.map {
+		.wrap {
+			left: 30px;
+		}
+	}
+}
+
+@media screen and (max-width: 1200px) {
+	.wrapper {
+		.info {
+			p {
+				font-size: 20px;
+			}
+			button {
+				font-size: 18px;
+			}
+		}
+		.background {
+			width: 300px;
+		}
+	}
+}
+
+@media screen and (max-width: 700px) {
+	.map {
+		.wrap {
+			address {
+				width: 300px;
+				h2 {
+					font-size: 30px;
+				}
+				p {
+					margin-top: 10px;
+					font-size: 18px;
+				}
+			}
+		}
+	}
+
+	.wrapper {
+		.info {
+			p {
+				font-size: 16px;
+			}
+			button {
+				margin-top: 30px;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.wrapper {
+		.info {
+			p {
+				font-size: 14px;
+			}
+			button {
+				margin-top: 20px;
+				padding: 15px 20px;
+			}
+		}
+		.background {
+			top: 120px;
+			width: 180px;
+		}
+	}
+}
+
+@media screen and (max-width: 420px) {
+	.wrapper {
+		flex-direction: column;
+		text-align: center;
+		justify-content: center;
+		align-items: center;
+		padding-bottom: 0px;
+		.info {
+			margin-top: 50px;
+			p {
+				font-size: 14px;
+			}
+			button {
+				margin-top: 20px;
+				padding: 15px 20px;
+			}
+			&:last-child {
+				text-align: center;
+			}
+		}
+		.background {
+			display: none;
+		}
 	}
 }

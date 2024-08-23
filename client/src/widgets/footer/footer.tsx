@@ -28,35 +28,35 @@ export const Footer = () => {
 				</div>
 				<nav className={style.info}>
 					<h5>Также можете прочесть</h5>
-					<Link href="">
+					<Link href="/about">
 						<Image
 							src={Arrow}
 							alt="Arrow"
 						/>
 						О комитете
 					</Link>
-					<Link href="">
+					<Link href="/human">
 						<Image
 							src={Arrow}
 							alt="Arrow"
 						/>
 						Резиденты
 					</Link>
-					<Link href="">
+					<Link href="/project">
 						<Image
 							src={Arrow}
 							alt="Arrow"
 						/>
 						Проекты
 					</Link>
-					<Link href="">
+					<Link href="/privilege">
 						<Image
 							src={Arrow}
 							alt="Arrow"
 						/>
 						Привилегии
 					</Link>
-					<Link href="">
+					<Link href="/information">
 						<Image
 							src={Arrow}
 							alt="Arrow"

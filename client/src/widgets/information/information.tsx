@@ -1,5 +1,6 @@
 import { Massagers } from '@/shared/ui/massagers/massagers'
 
+import { Button } from '@/shared/ui/button/button'
 import Image from 'next/image'
 import bg from '../../../public/communication-social-media-icons-smartphone-device-transformed 1.svg'
 import style from './information.module.scss'
@@ -35,7 +36,7 @@ export const Information = () => {
 						Cum sociis natoque penatibus et magnis dis parturient
 						montes, nascetur ridiculus mus...
 					</p>
-					<button>more...</button>
+					<Button>more...</Button>
 				</div>
 				<Image
 					className={style.background}
@@ -49,7 +50,7 @@ export const Information = () => {
 						Cum sociis natoque penatibus et magnis dis parturient
 						montes, nascetur ridiculus mus...
 					</p>
-					<button>more...</button>
+					<Button>more...</Button>
 				</div>
 			</div>
 		</>

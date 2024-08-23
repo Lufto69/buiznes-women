@@ -1,7 +1,7 @@
 .container {
 	max-width: 1600px;
 	margin: 0 auto;
-	margin-top: 150px;
+	margin-top: 130px;
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
@@ -25,7 +25,29 @@
 			margin-top: 70px;
 			margin-bottom: 130px;
 			.partners_image {
-				max-width: 250px;
+				max-width: 350px;
+				padding: 0 20px;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 1200px) {
+	.container {
+		margin-top: 70px;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.container {
+		margin-top: 60px;
+		.partners {
+			h3 {
+				font-size: 30px;
+				padding: 0 20px;
+			}
+			ul {
+				margin: 50px 0;
 			}
 		}
 	}

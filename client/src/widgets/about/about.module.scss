@@ -28,6 +28,7 @@
 	ul {
 		list-style: none;
 		margin-top: 80px;
+		padding: 0 20px;
 		li {
 			display: flex;
 			align-items: center;
@@ -48,10 +49,10 @@
 				&::before {
 					content: '';
 					z-index: -1;
-					top: -100px;
+					top: -120px;
 					position: absolute;
 					width: 4px;
-					height: 100px;
+					height: 130px;
 					background: #036;
 				}
 			}
@@ -87,6 +88,102 @@
 		font-size: 20px;
 		&:hover {
 			background: rgb(1, 68, 134);
+		}
+	}
+}
+
+@media screen and (max-width: 1200px) {
+	.about {
+		ul {
+			li {
+				.number {
+					padding: 0 20px;
+				}
+				.action {
+					h2 {
+						font-size: 34px;
+					}
+					p {
+						font-size: 24px;
+					}
+				}
+			}
+		}
+		.invite_button {
+			margin-top: 40px;
+		}
+	}
+}
+
+@media screen and (max-width: 720px) {
+	.about {
+		.sells {
+			h1 {
+				font-size: 32px;
+			}
+			div {
+				font-size: 20px;
+			}
+		}
+
+		ul {
+			margin-top: 50px;
+			li {
+				.action {
+					h2 {
+						font-size: 28px;
+					}
+					p {
+						font-size: 18px;
+					}
+				}
+			}
+		}
+		.invite_button {
+			margin-top: 0px;
+		}
+	}
+}
+
+@media screen and (max-width: 520px) {
+	.about {
+		.sells {
+			padding: 60px 30px;
+			h1 {
+				font-size: 24px;
+			}
+			div {
+				font-size: 20px;
+				margin: 30px 0;
+			}
+		}
+
+		ul {
+			li {
+				.action {
+					h2 {
+						font-size: 22px;
+					}
+					p {
+						font-size: 14px;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 360px) {
+	.about {
+		.sells {
+			padding: 40px 30px;
+			h1 {
+				font-size: 22px;
+			}
+			div {
+				font-size: 18px;
+				margin: 30px 0;
+			}
 		}
 	}
 }

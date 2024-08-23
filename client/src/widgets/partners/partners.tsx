@@ -14,21 +14,21 @@ export const Partners = () => {
 						<Image
 							src={logo}
 							alt=""
-							className="style.partners_image"
+							className={style.partners_image}
 						/>
 					</li>
 					<li>
 						<Image
 							src={logo}
 							alt=""
-							className="style.partners_image"
+							className={style.partners_image}
 						/>
 					</li>
 					<li>
 						<Image
 							src={logo}
 							alt=""
-							className="style.partners_image"
+							className={style.partners_image}
 						/>
 					</li>
 				</ul>

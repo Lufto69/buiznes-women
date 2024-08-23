@@ -1,11 +1,10 @@
 {
-  "/about": "pages/about.js",
-  "/human": "pages/human.js",
   "/_app": "pages/_app.js",
-  "/information": "pages/information.js",
-  "/privilege": "pages/privilege.js",
-  "/project": "pages/project.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js"
+  "/information": "pages/information.js",
+  "/about": "pages/about.js",
+  "/project": "pages/project.js",
+  "/human": "pages/human.js",
+  "/privilege": "pages/privilege.js"
 }
