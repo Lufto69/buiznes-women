@@ -2,8 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/privilege": "pages/privilege.js",
-  "/about": "pages/about.js",
+  "/project": "pages/project.js",
   "/human": "pages/human.js",
-  "/project": "pages/project.js"
+  "/": "pages/index.js"
 }
