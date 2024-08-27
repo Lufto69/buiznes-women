@@ -4,7 +4,18 @@ import clsx from 'clsx'
 import Image from 'next/image'
 import style from './humanList.module.scss'
 
+import { useAllTag } from '@/features/useAllTag'
+import { useHumans } from '@/features/useHumans'
+import { useEffect, useState } from 'react'
+
 export const HumanList = () => {
+	let [tag, SomeTag] = useState('Все')
+
+	useEffect(() => {}, [tag])
+
+	const { humans } = useHumans()
+	const { tags } = useAllTag()
+
 	return (
 		<div className={style.listPerson}>
 			<h1>Участники комитета</h1>
@@ -12,13 +23,24 @@ export const HumanList = () => {
 			<div className={clsx(style.persons, style.persons_custom_block)}>
 				<h2>Администрация</h2>
 				<ul>
-					<li>
-						<Image
-							src=""
-							alt=""
-						/>
-						<Button className={style.button}>More...\_O_/</Button>
-					</li>
+					{humans?.map(
+						(people: {
+							id: number
+							name: string
+							tagresenent: []
+							img: string
+						}) => {
+							if (
+								people?.tagresenent?.some(
+									(tag: { name: string }) => {
+										return tag.name == 'Администратор'
+									}
+								)
+							) {
+								return <Human people={people} />
+							}
+						}
+					)}
 				</ul>
 			</div>
 
@@ -26,19 +48,71 @@ export const HumanList = () => {
 				<h2>All persons</h2>
 
 				<ul className={style.tabs}>
-					<Tag>Кек</Tag>
+					{tags?.map((tags: { id: number; name: string }) => {
+						return (
+							<div
+								onClick={() => {
+									SomeTag(tags.name)
+								}}
+							>
+								<Tag
+									key={tags.id}
+									active={tags.name == tag}
+								>
+									{tags.name}
+								</Tag>
+							</div>
+						)
+					})}
 				</ul>
 
 				<ul>
-					<li>
-						<Image
-							src=""
-							alt=""
-						/>
-						<Button className={style.button}>Вольфшлеге</Button>
-					</li>
+					{humans?.map(
+						(people: {
+							id: number
+							name: string
+							tagresenent: []
+							img: string
+						}) => {
+							if (tag === 'Все') {
+								return <Human people={people} />
+							}
+							if (
+								people.tagresenent.some(
+									(tags: { name: string }) => {
+										return tags.name == tag
+									}
+								)
+							) {
+								return <Human people={people} />
+							}
+						}
+					)}
 				</ul>
 			</div>
 		</div>
+	)
+}
+
+const Human = ({
+	people,
+}: {
+	people: {
+		id: number
+		name: string
+		tagresenent: []
+		img: string
+	}
+}) => {
+	return (
+		<li key={people.id}>
+			<Image
+				src={`http://localhost:8080/image/${people.img}`}
+				alt=""
+				width={300}
+				height={300}
+			/>
+			<Button className={style.button}>{people.name}</Button>
+		</li>
 	)
 }

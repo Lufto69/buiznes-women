@@ -70,9 +70,13 @@
 			gap: 50px;
 			padding: 40px;
 			li {
-				max-width: 280px;
+				width: 280px;
+				height: 450px;
 				padding: 20px 20px 100px 20px;
 				background: #fefefe;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
 				border-radius: 0px 0px 50px 50px;
 				box-shadow: 1px 2px 20px rgba(0, 0, 0, 0.4);
 				h2 {

@@ -1,7 +1,15 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
+/node_modules
+.env
+roadmap.png
+*.log
+test.js
+package-lock.json
+image/*
 # dependencies
 /client/node_modules
+/server/node_modules
+/client/.next
 /client/next
 /.pnp
 .pnp.js
