@@ -1,9 +1,11 @@
 import { usePrivilege } from '@/features/usePrivilege'
 import { usePrivilegeTags } from '@/features/usePrivilegeTag'
 import { Tag } from '@/shared/ui/tag/tag'
+import { useState } from 'react'
 import style from './privilege.module.scss'
 
 export const Privilege = () => {
+	const [tagActive, setTag] = useState('Все')
 	const { PrivilegeTags } = usePrivilegeTags()
 	const { Privilege } = usePrivilege()
 
@@ -12,8 +14,33 @@ export const Privilege = () => {
 			<h1>Привилегии</h1>
 
 			<ul className={style.tabs}>
+				<div
+					onClick={() => {
+						setTag('Все')
+					}}
+				>
+					<Tag
+						key={'Все'}
+						active={tagActive == 'Все'}
+					>
+						Все
+					</Tag>
+				</div>
 				{PrivilegeTags?.map((tag: string, index: number) => {
-					return <Tag key={index}>{tag}</Tag>
+					return (
+						<div
+							onClick={() => {
+								setTag(tag)
+							}}
+						>
+							<Tag
+								key={index}
+								active={tag == tagActive}
+							>
+								{tag}
+							</Tag>
+						</div>
+					)
 				})}
 			</ul>
 
@@ -27,22 +54,39 @@ export const Privilege = () => {
 							href_link: string
 							tag: string
 						}) => {
-							return (
-								<li key={privilege.id}>
-									<div>
-										<h2>{privilege.name}</h2>
-										<p>{privilege.text_link}</p>
-									</div>
-
-									<a href={privilege.href_link}>
-										Подробнее...
-									</a>
-								</li>
-							)
+							if (tagActive === 'Все') {
+								return <PrivilegeItem privilege={privilege} />
+							}
+							if (privilege.tag === tagActive) {
+								return <PrivilegeItem privilege={privilege} />
+							}
 						}
 					)}
 				</ul>
 			</div>
 		</main>
+	)
+}
+
+const PrivilegeItem = ({
+	privilege,
+}: {
+	privilege: {
+		id: number
+		name: string
+		text_link: string
+		href_link: string
+		tag: string
+	}
+}) => {
+	return (
+		<li key={privilege.id}>
+			<div>
+				<h2>{privilege.name}</h2>
+				<p>{privilege.text_link}</p>
+			</div>
+
+			<a href={privilege.href_link}>Подробнее...</a>
+		</li>
 	)
 }
