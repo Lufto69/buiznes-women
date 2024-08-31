@@ -1,9 +1,14 @@
-import { fetchedAddProject, fetchedDeleteProject, fetchedProjects } from '@/shared/api/queryes'
+import { queryClient } from '@/shared/api/query-client'
+import {
+	fetchedAddProject,
+	fetchedDeleteProject,
+	fetchedProjects,
+} from '@/shared/api/queryes'
 import { useMutation, useQuery } from '@tanstack/react-query'
 
 export const useProjects = () => {
 	const { data } = useQuery({
-		queryKey: ['Humans'],
+		queryKey: ['Project'],
 		queryFn: fetchedProjects,
 	})
 
@@ -15,6 +20,11 @@ export const useProjects = () => {
 export const useAddProject = () => {
 	const { data, mutate } = useMutation({
 		mutationFn: fetchedAddProject,
+		onSuccess: () => {
+			queryClient.invalidateQueries({
+				queryKey: ['Project'],
+			})
+		},
 	})
 
 	return {
@@ -26,6 +36,11 @@ export const useAddProject = () => {
 export const useDeleteProject = () => {
 	const { data, mutate } = useMutation({
 		mutationFn: fetchedDeleteProject,
+		onSuccess: () => {
+			queryClient.invalidateQueries({
+				queryKey: ['Project'],
+			})
+		},
 	})
 
 	return {
@@ -33,5 +48,3 @@ export const useDeleteProject = () => {
 		projectDelete: mutate,
 	}
 }
-
-

@@ -1,4 +1,9 @@
-import { fetchedAddPrivilege, fetchedDeletePrivilege, fetchedPrivilege } from '@/shared/api/queryes'
+import { queryClient } from '@/shared/api/query-client'
+import {
+	fetchedAddPrivilege,
+	fetchedDeletePrivilege,
+	fetchedPrivilege,
+} from '@/shared/api/queryes'
 import { useMutation, useQuery } from '@tanstack/react-query'
 
 export const usePrivilege = () => {
@@ -15,6 +20,11 @@ export const usePrivilege = () => {
 export const useAddPrivilege = () => {
 	const { data, mutate } = useMutation({
 		mutationFn: fetchedAddPrivilege,
+		onSuccess: () => {
+			queryClient.invalidateQueries({
+				queryKey: ['Privilege'],
+			})
+		},
 	})
 
 	return {
@@ -26,6 +36,11 @@ export const useAddPrivilege = () => {
 export const useDeletePrivilege = () => {
 	const { data, mutate } = useMutation({
 		mutationFn: fetchedDeletePrivilege,
+		onSuccess: () => {
+			queryClient.invalidateQueries({
+				queryKey: ['Privilege'],
+			})
+		},
 	})
 
 	return {
@@ -33,4 +48,3 @@ export const useDeletePrivilege = () => {
 		privilegeDelete: mutate,
 	}
 }
-

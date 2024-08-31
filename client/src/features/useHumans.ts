@@ -1,3 +1,4 @@
+import { queryClient } from '@/shared/api/query-client'
 import {
 	fetchedAddHuman,
 	fetchedDeleteHuman,
@@ -31,6 +32,11 @@ export const useOneHumans = (id: string | string[]) => {
 export const useAddHumans = () => {
 	const { mutate } = useMutation({
 		mutationFn: fetchedAddHuman,
+		onSuccess: () => {
+			queryClient.invalidateQueries({
+				queryKey: ['Humans'],
+			})
+		},
 	})
 	return {
 		humanAdd: mutate,
@@ -40,6 +46,11 @@ export const useAddHumans = () => {
 export const useDeleteHumans = () => {
 	const { mutate } = useMutation({
 		mutationFn: fetchedDeleteHuman,
+		onSuccess: () => {
+			queryClient.invalidateQueries({
+				queryKey: ['Humans'],
+			})
+		},
 	})
 	return {
 		humanDelete: mutate,

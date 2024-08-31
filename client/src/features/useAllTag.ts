@@ -1,10 +1,10 @@
+import { queryClient } from '@/shared/api/query-client'
 import {
 	fetchedAddHumanTag,
 	fetchedAddInListHumanTag,
 	fetchedDeleteTag,
 	fetchedHumanTags,
 	fetchedPrivilegeTags,
-	fetchedSortHumanTags,
 } from '@/shared/api/queryes'
 import { useMutation, useQuery } from '@tanstack/react-query'
 
@@ -16,17 +16,6 @@ export const useAllTag = () => {
 
 	return {
 		tags: data,
-	}
-}
-
-export const useHumanTag = () => {
-	const { data } = useQuery({
-		queryKey: ['HumanTags'],
-		queryFn: fetchedSortHumanTags,
-	})
-
-	return {
-		sortTags: data,
 	}
 }
 
@@ -44,6 +33,11 @@ export const usePrivilegeTags = () => {
 export const useAddHumanTag = () => {
 	const { data, mutate } = useMutation({
 		mutationFn: fetchedAddHumanTag,
+		onSuccess: () => {
+			queryClient.invalidateQueries({
+				queryKey: ['Tags'],
+			})
+		},
 	})
 
 	return {
@@ -66,6 +60,11 @@ export const useAddInListHumanTag = () => {
 export const useDeleteTag = () => {
 	const { data, mutate } = useMutation({
 		mutationFn: fetchedDeleteTag,
+		onSuccess: () => {
+			queryClient.invalidateQueries({
+				queryKey: ['Tags'],
+			})
+		},
 	})
 
 	return {

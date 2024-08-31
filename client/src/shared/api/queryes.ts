@@ -32,12 +32,6 @@ export const fetchedHumanTags = async () => {
 	)
 }
 
-export const fetchedSortHumanTags = async () => {
-	return await fetch(`${url}/allResedent?tag=`, { method: 'GET' }).then(
-		data => data.json()
-	)
-}
-
 export const fetchedAddHumanTag = async (event: any) => {
 	event.preventDefault()
 	return await fetch(`${url}/tag`, {
