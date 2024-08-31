@@ -4,7 +4,7 @@ import { HumanList } from '@/widgets/humanList/humanList'
 import { Partners } from '@/widgets/partners/partners'
 import style from './home.module.scss'
 import { Human } from '@/widgets/humanCard/humanCard'
-export default function HomePage() {
+export default function HumanPage() {
 	return (
 		<>
 			<Header />

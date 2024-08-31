@@ -1,12 +1,12 @@
 .person {
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
+	justify-content: flex-start;
 	position: relative;
 	margin: auto;
-	padding: 100px 0;
+	padding: 100px 20px 0 20px;
 	flex-grow: 3;
-	width: 1200px;
+	max-width: 1200px;
 	.back {
 		position: absolute;
 		padding: 10px 20px;
@@ -25,25 +25,83 @@
 		max-width: 400px;
 		max-height: 500px;
 	}
-	.person-info {
+	.person_info {
 		margin-left: 50px;
 		h1 {
-			margin-top: 20px;
 			font-size: 50px;
 			font-weight: 700;
 			color: #036;
 		}
-		div {
-			margin-top: 40px;
-			font-size: 40px;
+		.wrap {
+			margin-top: 5px;
+			display: flex;
+			justify-content: flex-start;
+			flex-wrap: wrap;
+			gap: 10px 20px;
+			font-size: 22px;
 			font-weight: 500;
-			color: #036;
+			color: rgba(0, 51, 102, 0.574);
 		}
 		p {
-			margin-top: 40px;
+			margin-top: 30px;
 			color: #131313;
 			font-size: 30px;
 			font-weight: 400;
+		}
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	.person {
+		.person_info {
+			h1 {
+				font-size: 45px;
+			}
+			p {
+				font-size: 22px;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 850px) {
+	.person {
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+		.person_info {
+			text-align: center;
+			margin-left: 0px;
+			h1 {
+				font-size: 45px;
+			}
+			p {
+				text-align: start;
+				font-size: 22px;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 520px) {
+	.person {
+		img {
+			width: 100%;
+			object-fit: cover;
+			height: auto;
+		}
+		.person_info {
+			h1 {
+				font-size: 35px;
+				margin-top: 10px;
+			}
+			.wrap {
+				margin-top: 20px;
+				justify-content: center;
+			}
+			p {
+				font-size: 20px;
+			}
 		}
 	}
 }

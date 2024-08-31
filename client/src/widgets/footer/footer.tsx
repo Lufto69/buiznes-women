@@ -5,7 +5,6 @@ import style from './footer.module.scss'
 import Link from 'next/link'
 import Arrow from '../../../public/Arrow.svg'
 import logo from '../../../public/Слой_x0020_1.svg'
-import { useContext } from 'react'
 
 export const Footer = () => {
 	return (
@@ -36,7 +35,7 @@ export const Footer = () => {
 						/>
 						О комитете
 					</Link>
-					<Link href="/human">
+					<Link href="/humans">
 						<Image
 							src={Arrow}
 							alt="Arrow"

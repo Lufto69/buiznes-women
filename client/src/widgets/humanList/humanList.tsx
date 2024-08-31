@@ -6,6 +6,7 @@ import style from './humanList.module.scss'
 
 import { useAllTag } from '@/features/useAllTag'
 import { useHumans } from '@/features/useHumans'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 export const HumanList = () => {
@@ -37,7 +38,12 @@ export const HumanList = () => {
 									}
 								)
 							) {
-								return <Human people={people} />
+								return (
+									<Human
+										key={people.id}
+										people={people}
+									/>
+								)
 							}
 						}
 					)}
@@ -51,16 +57,12 @@ export const HumanList = () => {
 					{tags?.map((tags: { id: number; name: string }) => {
 						return (
 							<div
+								key={tags.id}
 								onClick={() => {
 									SomeTag(tags.name)
 								}}
 							>
-								<Tag
-									key={tags.id}
-									active={tags.name == tag}
-								>
-									{tags.name}
-								</Tag>
+								<Tag active={tags.name == tag}>{tags.name}</Tag>
 							</div>
 						)
 					})}
@@ -75,7 +77,12 @@ export const HumanList = () => {
 							img: string
 						}) => {
 							if (tag === 'Все') {
-								return <Human people={people} />
+								return (
+									<Human
+										key={people.id}
+										people={people}
+									/>
+								)
 							}
 							if (
 								people.tagresenent.some(
@@ -84,7 +91,12 @@ export const HumanList = () => {
 									}
 								)
 							) {
-								return <Human people={people} />
+								return (
+									<Human
+										key={people.id}
+										people={people}
+									/>
+								)
 							}
 						}
 					)}
@@ -94,8 +106,10 @@ export const HumanList = () => {
 	)
 }
 
-const Human = ({
+export const Human = ({
 	people,
+	onDelete,
+	admin,
 }: {
 	people: {
 		id: number
@@ -103,16 +117,27 @@ const Human = ({
 		tagresenent: []
 		img: string
 	}
+	onDelete?: any
+	admin?: boolean
 }) => {
 	return (
-		<li key={people.id}>
+		<li className={style.li}>
+			<div
+				className={clsx(admin ? style.delete : 'none')}
+				onClick={() => onDelete()}
+			>
+				&#10006;
+			</div>
 			<Image
 				src={`http://localhost:8080/image/${people.img}`}
 				alt=""
+				className={style.img}
 				width={300}
 				height={300}
 			/>
-			<Button className={style.button}>{people.name}</Button>
+			<Link href={`/${people.id}/persons`}>
+				<Button className={style.button}>{people.name}</Button>
+			</Link>
 		</li>
 	)
 }

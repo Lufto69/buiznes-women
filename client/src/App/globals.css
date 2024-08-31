@@ -109,3 +109,7 @@ a {
 		color-scheme: dark;
 	}
 }
+
+.none {
+	display: none;
+}

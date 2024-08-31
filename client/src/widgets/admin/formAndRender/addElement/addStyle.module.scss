@@ -1,0 +1,30 @@
+.container {
+	margin: auto;
+	width: 630px;
+	form {
+		display: flex;
+		flex-direction: column;
+		gap: 20px 0;
+		margin: auto;
+		width: auto;
+		justify-content: center;
+		align-items: flex-end;
+		margin-bottom: 40px;
+		input {
+			padding: 10px 20px;
+			margin: 0 70px 0 20px;
+			border-radius: 20px;
+			width: 300px;
+		}
+		select {
+			padding: 10px 20px;
+			margin: 0 70px 0 20px;
+			border-radius: 20px;
+			width: 300px;
+			font-size: 16px;
+		}
+		.btn {
+			margin: auto;
+		}
+	}
+}

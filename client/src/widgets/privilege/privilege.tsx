@@ -1,6 +1,7 @@
+import { usePrivilegeTags } from '@/features/useAllTag'
 import { usePrivilege } from '@/features/usePrivilege'
-import { usePrivilegeTags } from '@/features/usePrivilegeTag'
 import { Tag } from '@/shared/ui/tag/tag'
+import clsx from 'clsx'
 import { useState } from 'react'
 import style from './privilege.module.scss'
 
@@ -68,8 +69,10 @@ export const Privilege = () => {
 	)
 }
 
-const PrivilegeItem = ({
+export const PrivilegeItem = ({
 	privilege,
+	onDelete,
+	admin,
 }: {
 	privilege: {
 		id: number
@@ -78,9 +81,20 @@ const PrivilegeItem = ({
 		href_link: string
 		tag: string
 	}
+	onDelete?: any
+	admin?: boolean
 }) => {
 	return (
-		<li key={privilege.id}>
+		<li
+			key={privilege.id}
+			className={style.li}
+		>
+			<div
+				className={clsx(admin ? style.delete : 'none')}
+				onClick={() => onDelete()}
+			>
+				&#10006;
+			</div>
 			<div>
 				<h2>{privilege.name}</h2>
 				<p>{privilege.text_link}</p>

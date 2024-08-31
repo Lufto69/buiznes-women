@@ -1,7 +1,7 @@
-import express from 'express'
 import { PrismaClient } from '@prisma/client'
+import express from 'express'
 
-import { writeLog, clearObject }  from './functions.js'
+import { clearObject, writeLog } from './functions.js'
 import multerStorage from './multer.js'
 
 const prisma = new PrismaClient()
@@ -141,7 +141,7 @@ router.route('/tagOnResedent/:id')
             data: {
                 tagresenent: {
                     disconnect: req.body.map(o => {
-                        return {id:o}
+                        return {id:Number(o)}
                     })
                 }
             }
@@ -163,7 +163,7 @@ router.route('/tagOnResedent/:id')
             data: {
                 tagresenent: {
                     connect: req.body.map(o => {
-                        return {id:o}
+                        return {id:Number(o)}
                     })
                 }
             }

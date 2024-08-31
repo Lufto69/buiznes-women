@@ -51,7 +51,7 @@ const Menu = () => {
 		<>
 			<nav>
 				<Link href="/about">О комитете</Link>
-				<Link href="/human">Резиденты</Link>
+				<Link href="/humans">Резиденты</Link>
 				<Link href="/project">Проекты</Link>
 				<Link href="/privilege">Привилегии</Link>
 				<Link href="/information">Контакты</Link>

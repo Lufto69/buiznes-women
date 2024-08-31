@@ -1,5 +1,5 @@
-import { fetchedProjects } from '@/shared/api/queryes'
-import { useQuery } from '@tanstack/react-query'
+import { fetchedAddProject, fetchedDeleteProject, fetchedProjects } from '@/shared/api/queryes'
+import { useMutation, useQuery } from '@tanstack/react-query'
 
 export const useProjects = () => {
 	const { data } = useQuery({
@@ -11,3 +11,27 @@ export const useProjects = () => {
 		projects: data,
 	}
 }
+
+export const useAddProject = () => {
+	const { data, mutate } = useMutation({
+		mutationFn: fetchedAddProject,
+	})
+
+	return {
+		data: data,
+		projectAdd: mutate,
+	}
+}
+
+export const useDeleteProject = () => {
+	const { data, mutate } = useMutation({
+		mutationFn: fetchedDeleteProject,
+	})
+
+	return {
+		data: data,
+		projectDelete: mutate,
+	}
+}
+
+

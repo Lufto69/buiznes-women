@@ -1,5 +1,10 @@
-import { fetchedHumans } from '@/shared/api/queryes'
-import { useQuery } from '@tanstack/react-query'
+import {
+	fetchedAddHuman,
+	fetchedDeleteHuman,
+	fetchedHumans,
+	fetchedOneHuman,
+} from '@/shared/api/queryes'
+import { useMutation, useQuery } from '@tanstack/react-query'
 
 export const useHumans = () => {
 	const { data } = useQuery({
@@ -9,5 +14,34 @@ export const useHumans = () => {
 
 	return {
 		humans: data,
+	}
+}
+
+export const useOneHumans = (id: string | string[]) => {
+	const { data, isLoading } = useQuery({
+		queryKey: ['Human'],
+		queryFn: () => fetchedOneHuman(id),
+	})
+	return {
+		human: data,
+		isLoading,
+	}
+}
+
+export const useAddHumans = () => {
+	const { mutate } = useMutation({
+		mutationFn: fetchedAddHuman,
+	})
+	return {
+		humanAdd: mutate,
+	}
+}
+
+export const useDeleteHumans = () => {
+	const { mutate } = useMutation({
+		mutationFn: fetchedDeleteHuman,
+	})
+	return {
+		humanDelete: mutate,
 	}
 }

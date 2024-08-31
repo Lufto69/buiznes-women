@@ -1,12 +1,14 @@
 .li {
 	display: inline-block;
 	list-style: none;
+	position: relative;
 	padding: 8px 20px;
 	border-radius: 50px;
 	border: 2px solid #036;
 	color: #036;
 	font-size: 18px;
 	font-weight: 600;
+	cursor: pointer;
 	&:hover {
 		background: #036;
 		color: rgb(255, 255, 255);
@@ -16,4 +18,25 @@
 .active {
 	background: #036;
 	color: rgb(255, 255, 255);
+}
+
+.unActive {
+	&:hover {
+		background: rgb(255, 255, 255);
+		color: #036;
+	}
+}
+
+.delete {
+	content: '';
+	position: absolute;
+	top: -20px;
+	right: -10px;
+	padding: 6px 10px;
+	border-radius: 50%;
+	background: #fc4646;
+	&:hover {
+		background: #036;
+		color: rgb(255, 255, 255);
+	}
 }
