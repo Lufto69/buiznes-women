@@ -1,27 +1,32 @@
 import { useProjects } from '@/features/useProject'
+import { Loader } from '@/shared/ui/loader/Loader'
 import clsx from 'clsx'
 import style from './project.module.scss'
 
 export const Project = () => {
-	const { projects } = useProjects()
+	const { projects, isLoading } = useProjects()
 
 	return (
 		<div className={style.container}>
 			<h1>Проекты</h1>
 
 			<div className={style.project}>
-				<ul>
-					{projects?.map(
-						(project: {
-							id: number
-							name: string
-							text: string
-							url: string
-						}) => {
-							return <ProjectItem project={project} />
-						}
-					)}
-				</ul>
+				{isLoading ? (
+					<Loader />
+				) : (
+					<ul>
+						{projects?.map(
+							(project: {
+								id: number
+								name: string
+								text: string
+								url: string
+							}) => {
+								return <ProjectItem project={project} />
+							}
+						)}
+					</ul>
+				)}
 			</div>
 		</div>
 	)

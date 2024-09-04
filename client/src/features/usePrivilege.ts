@@ -7,13 +7,14 @@ import {
 import { useMutation, useQuery } from '@tanstack/react-query'
 
 export const usePrivilege = () => {
-	const { data } = useQuery({
+	const { data, isLoading } = useQuery({
 		queryKey: ['Privilege'],
 		queryFn: fetchedPrivilege,
 	})
 
 	return {
 		Privilege: data,
+		isLoading,
 	}
 }
 

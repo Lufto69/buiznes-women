@@ -9,24 +9,26 @@ import {
 import { useMutation, useQuery } from '@tanstack/react-query'
 
 export const useAllTag = () => {
-	const { data } = useQuery({
+	const { data, isLoading } = useQuery({
 		queryKey: ['Tags'],
 		queryFn: fetchedHumanTags,
 	})
 
 	return {
 		tags: data,
+		isLoading,
 	}
 }
 
 export const usePrivilegeTags = () => {
-	const { data } = useQuery({
+	const { data, isLoading } = useQuery({
 		queryKey: ['PrivilegeTags'],
 		queryFn: fetchedPrivilegeTags,
 	})
 
 	return {
 		PrivilegeTags: data,
+		isLoading,
 	}
 }
 

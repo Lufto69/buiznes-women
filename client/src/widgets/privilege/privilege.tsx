@@ -1,5 +1,6 @@
 import { usePrivilegeTags } from '@/features/useAllTag'
 import { usePrivilege } from '@/features/usePrivilege'
+import { Loader } from '@/shared/ui/loader/Loader'
 import { Tag } from '@/shared/ui/tag/tag'
 import clsx from 'clsx'
 import { useState } from 'react'
@@ -8,63 +9,76 @@ import style from './privilege.module.scss'
 export const Privilege = () => {
 	const [tagActive, setTag] = useState('Все')
 	const { PrivilegeTags } = usePrivilegeTags()
-	const { Privilege } = usePrivilege()
+	const { Privilege, isLoading } = usePrivilege()
 
 	return (
 		<main className={style.container}>
 			<h1>Привилегии</h1>
-
-			<ul className={style.tabs}>
-				<div
-					onClick={() => {
-						setTag('Все')
-					}}
-				>
-					<Tag
-						key={'Все'}
-						active={tagActive == 'Все'}
-					>
-						Все
-					</Tag>
-				</div>
-				{PrivilegeTags?.map((tag: string, index: number) => {
-					return (
+			{isLoading ? (
+				<Loader />
+			) : (
+				<>
+					<ul className={style.tabs}>
 						<div
 							onClick={() => {
-								setTag(tag)
+								setTag('Все')
 							}}
 						>
 							<Tag
-								key={index}
-								active={tag == tagActive}
+								key={'Все'}
+								active={tagActive == 'Все'}
 							>
-								{tag}
+								Все
 							</Tag>
 						</div>
-					)
-				})}
-			</ul>
+						{PrivilegeTags?.map((tag: string, index: number) => {
+							return (
+								<div
+									onClick={() => {
+										setTag(tag)
+									}}
+								>
+									<Tag
+										key={index}
+										active={tag == tagActive}
+									>
+										{tag}
+									</Tag>
+								</div>
+							)
+						})}
+					</ul>
 
-			<div className={style.privilege}>
-				<ul>
-					{Privilege?.map(
-						(privilege: {
-							id: number
-							name: string
-							text_link: string
-							href_link: string
-							tag: string
-						}) => {
-							if (tagActive === 'Все') {
-								return <PrivilegeItem privilege={privilege} />
-							}
-							if (privilege.tag === tagActive) {
-								return <PrivilegeItem privilege={privilege} />
-							}
-						}
-					)}
-				</ul>
-			</div>
+					<div className={style.privilege}>
+						<ul>
+							{Privilege?.map(
+								(privilege: {
+									id: number
+									name: string
+									text_link: string
+									href_link: string
+									tag: string
+								}) => {
+									if (tagActive === 'Все') {
+										return (
+											<PrivilegeItem
+												privilege={privilege}
+											/>
+										)
+									}
+									if (privilege.tag === tagActive) {
+										return (
+											<PrivilegeItem
+												privilege={privilege}
+											/>
+										)
+									}
+								}
+							)}
+						</ul>
+					</div>
+				</>
+			)}
 		</main>
 	)
 }

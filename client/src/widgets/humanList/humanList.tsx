@@ -6,6 +6,7 @@ import style from './humanList.module.scss'
 
 import { useAllTag } from '@/features/useAllTag'
 import { useHumans } from '@/features/useHumans'
+import { Loader } from '@/shared/ui/loader/Loader'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
@@ -14,7 +15,7 @@ export const HumanList = () => {
 
 	useEffect(() => {}, [tag])
 
-	const { humans } = useHumans()
+	const { humans, isLoading } = useHumans()
 	const { tags } = useAllTag()
 
 	return (
@@ -23,84 +24,95 @@ export const HumanList = () => {
 
 			<div className={clsx(style.persons, style.persons_custom_block)}>
 				<h2>Администрация</h2>
-				<ul>
-					{humans?.map(
-						(people: {
-							id: number
-							name: string
-							tagresenent: []
-							img: string
-						}) => {
-							if (
-								people?.tagresenent?.some(
-									(tag: { name: string }) => {
-										return tag.name == 'Администратор'
-									}
-								)
-							) {
-								return (
-									<Human
-										key={people.id}
-										people={people}
-									/>
-								)
+				{isLoading ? (
+					<Loader />
+				) : (
+					<ul>
+						{humans?.map(
+							(people: {
+								id: number
+								name: string
+								tagresenent: []
+								img: string
+							}) => {
+								if (
+									people?.tagresenent?.some(
+										(tag: { name: string }) => {
+											return tag.name == 'Администратор'
+										}
+									)
+								) {
+									return (
+										<Human
+											key={people.id}
+											people={people}
+										/>
+									)
+								}
 							}
-						}
-					)}
-				</ul>
+						)}
+					</ul>
+				)}
 			</div>
 
 			<div className={style.persons}>
 				<h2>All persons</h2>
-
-				<ul className={style.tabs}>
-					{tags?.map((tags: { id: number; name: string }) => {
-						return (
-							<div
-								key={tags.id}
-								onClick={() => {
-									SomeTag(tags.name)
-								}}
-							>
-								<Tag active={tags.name == tag}>{tags.name}</Tag>
-							</div>
-						)
-					})}
-				</ul>
-
-				<ul>
-					{humans?.map(
-						(people: {
-							id: number
-							name: string
-							tagresenent: []
-							img: string
-						}) => {
-							if (tag === 'Все') {
+				{isLoading ? (
+					<Loader />
+				) : (
+					<>
+						<ul className={style.tabs}>
+							{tags?.map((tags: { id: number; name: string }) => {
 								return (
-									<Human
-										key={people.id}
-										people={people}
-									/>
+									<div
+										key={tags.id}
+										onClick={() => {
+											SomeTag(tags.name)
+										}}
+									>
+										<Tag active={tags.name == tag}>
+											{tags.name}
+										</Tag>
+									</div>
 								)
-							}
-							if (
-								people.tagresenent.some(
-									(tags: { name: string }) => {
-										return tags.name == tag
+							})}
+						</ul>
+
+						<ul>
+							{humans?.map(
+								(people: {
+									id: number
+									name: string
+									tagresenent: []
+									img: string
+								}) => {
+									if (tag === 'Все') {
+										return (
+											<Human
+												key={people.id}
+												people={people}
+											/>
+										)
 									}
-								)
-							) {
-								return (
-									<Human
-										key={people.id}
-										people={people}
-									/>
-								)
-							}
-						}
-					)}
-				</ul>
+									if (
+										people.tagresenent.some(
+											(tags: { name: string }) => {
+												return tags.name == tag
+											}
+										)
+									) {
+										return (
+											<Human
+												key={people.id}
+												people={people}
+											/>
+										)
+									}
+								}
+							)}
+						</ul>
+					</>
+				)}
 			</div>
 		</div>
 	)

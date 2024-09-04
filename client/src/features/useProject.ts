@@ -7,13 +7,14 @@ import {
 import { useMutation, useQuery } from '@tanstack/react-query'
 
 export const useProjects = () => {
-	const { data } = useQuery({
+	const { data, isLoading } = useQuery({
 		queryKey: ['Project'],
 		queryFn: fetchedProjects,
 	})
 
 	return {
 		projects: data,
+		isLoading,
 	}
 }
 
